@@ -11,13 +11,16 @@ const Create = () => {
       .create(content, date)
       .send({from: state.accounts[0]}, (err, hash) => {
         setContent('');
-        console.log(hash);
+        dispatch({type: 'SET_MESSAGE', payload: 'TxHash : '.concat(hash)});
       })
       .then(res => {
         console.log(res);
       })
       .catch(error => {
-        console.log(error.message);
+        dispatch({
+          type: 'SET_MESSAGE', 
+          payload: error.message.substring(0,100).concat('...')
+        });
       })
       .finally(() => {
         dispatch({type: 'SET_LOADING', payload: false});
