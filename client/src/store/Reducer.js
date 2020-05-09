@@ -3,6 +3,7 @@ const SET_WEB3 = 'SET_WEB3';
 const SET_ACCOUNTS = 'SET_ACCOUNTS';
 const SET_CONTRACT = 'SET_CONTRACT';
 const SET_LOADING = 'SET_LOADING';
+const SET_MESSAGE = 'SET_MESSAGE';
 
 // REDUCER
 const Reducer = (state, action) => {
@@ -15,6 +16,8 @@ const Reducer = (state, action) => {
       return {...state, contract: action.payload};
     case SET_LOADING:
       return {...state, loading: action.payload};
+    case SET_MESSAGE:
+      return {...state, message: action.payload};
   }
 }
 

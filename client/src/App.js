@@ -1,11 +1,12 @@
 import React, {useEffect, useReducer} from 'react';
 import './App.css';
-import Create from './components/create';
+import Create from './components/Create';
 import Reducer from './store/Reducer';
 import InitialState from './store/InitialState';
 import StoreContext from './store/StoreContext';
 import GetWeb3 from './web3/GetWeb3';
 import News from './contracts/News.json';
+import Message from './components/Message';
 
 function App() {
   // create the store
@@ -37,6 +38,7 @@ function App() {
     return (
       <StoreContext.Provider value={{state, dispatch}}>
         <div className="container">
+          {state.message && <Message />}
           <Create />
         </div>
       </StoreContext.Provider>

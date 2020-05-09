@@ -25,16 +25,16 @@ body {
   padding: 20px;
   margin: 10px;
 }
-.container #create {
-  margin: 20px 10px;
-}
-.container #create #message {
+.container #message {
   width: 100%;
   font-size: 20px;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
-  margin: 5px 0px;
+  margin: 10px;
   color: #144955;
+}
+.container #create {
+  margin: 20px 10px;
 }
 .container #create input {
   width: 100%;

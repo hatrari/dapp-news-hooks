@@ -3,6 +3,7 @@ const InitialState = {
   accounts: [],
   contract: undefined,
   loading: false,
+  message: undefined
 }
 
 export default InitialState;
