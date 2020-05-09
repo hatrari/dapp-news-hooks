@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  display: flex;
+  justify-content: center;
   min-height: 100vh;
+  background: #fff;
+}
+.container {
+  position: relative;
+  width: 960px;
+}
+.container #header {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 10px;
+}
+.container #create {
+  margin: 20px 10px;
+}
+.container #create #message {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0px;
+  color: #144955;
+}
+.container #create input {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #e0e1e2;
+  color: #144955;
+}
+.container #create input:focus {
+  border: 1px solid #144955;
+}
+.container #create button {
+  font-size: 16px;
+  margin: 5px 0px;
+  padding: 10px 15px;
+  background: #e0e1e2;
+  border: unset;
+  font-weight: bold;
+  color: #144955;
+  border-radius: 5px;
+}
+.container .card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  color: #144955;
+  transition: 0.5s;
 }
-
-.App-link {
-  color: #61dafb;
+.container .card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container .card .address {
+  font-size: 16px;
+  font-weight: bold;
+}
+.container .card .date {
+  font-size: 12px;
+}
+.container .card .content {
+  font-size: 20px;
+}
+.container .card .reactions {
+  font-size: 16px;
+  color: #F27405;
+  font-weight: bold;
+}
+.container .card .reactions .like {
+  cursor: pointer;
 }
