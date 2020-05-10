@@ -4,6 +4,7 @@ const SET_ACCOUNTS = 'SET_ACCOUNTS';
 const SET_CONTRACT = 'SET_CONTRACT';
 const SET_LOADING = 'SET_LOADING';
 const SET_MESSAGE = 'SET_MESSAGE';
+const SET_NEWS = 'SET_NEWS';
 
 // REDUCER
 const Reducer = (state, action) => {
@@ -18,6 +19,8 @@ const Reducer = (state, action) => {
       return {...state, loading: action.payload};
     case SET_MESSAGE:
       return {...state, message: action.payload};
+    case SET_NEWS:
+      return {...state, news: action.payload};
   }
 }
 

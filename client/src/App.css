@@ -11,7 +11,7 @@ body {
   background: #fff;
 }
 .container {
-  margin-top: 30px;
+  margin: 50px 0px;
   position: relative;
   width: 960px;
 }
@@ -57,6 +57,17 @@ body {
   font-weight: bold;
   color: #144955;
   border-radius: 5px;
+}
+.container #title {
+  margin: 30px 10px 20px 10px;
+}
+.container #title span {
+  background: #eff1f3;
+  font-size: 30px;
+  font-weight: bold;
+  border-bottom: 5px solid #144955;
+  padding: 5px;
+  color: #144955;
 }
 .container .card {
   position: relative;

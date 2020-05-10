@@ -7,6 +7,7 @@ import StoreContext from './store/StoreContext';
 import GetWeb3 from './web3/GetWeb3';
 import News from './contracts/News.json';
 import Message from './components/Message';
+import List from './components/List';
 
 function App() {
   // create the store
@@ -26,6 +27,8 @@ function App() {
           deployedNetworkReg && deployedNetworkReg.address,
         );
         dispatch({type: 'SET_CONTRACT', payload: contract});
+        const news = await contract.methods.news().call();
+        dispatch({type: 'SET_NEWS', payload: news});
         dispatch({type: 'SET_LOADING', payload: false});
       } catch {
         console.log('error');
@@ -40,6 +43,7 @@ function App() {
         <div className="container">
           {state.message && <Message />}
           <Create />
+          {state.news && <List />}
         </div>
       </StoreContext.Provider>
     )

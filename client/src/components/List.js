@@ -1,16 +1,14 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import StoreContext from '../store/StoreContext';
 
-const Create = () => {
+const List = () => {
   const {state, dispatch} = useContext(StoreContext);
-  const [content, setContent] = useState('');
-  const submit = () => {
+  const itemsToShow = state.news.length > 10 ? state.news.length - 10 : 0;
+  const like = (id) => {
     dispatch({type: 'SET_LOADING', payload: true});
-    let date = new Date().toLocaleDateString();
     state.contract.methods
-      .create(content, date)
+      .like(id)
       .send({from: state.accounts[0]}, (err, hash) => {
-        setContent('');
         dispatch({type: 'SET_MESSAGE', payload: 'TxHash : '.concat(hash)});
       })
       .then(res => {
@@ -28,16 +26,22 @@ const Create = () => {
       });
   }
   return (
-    <div id="create">
-      <input 
-        type="text" 
-        value={content}
-        placeholder="Content..."
-        onChange={e => setContent(e.target.value)}
-      />
-      <button onClick={submit}>Submit</button>
-    </div>
+    <>
+      <div id="title"><span>Last 10 news</span></div>
+      {state.news.slice(itemsToShow).map(item => (
+      <div className="card" key={item[0]}>
+          <div className="address">{item[1]}</div>
+          <div className="date">{item[2]}</div>
+          <div className="content">{item[3]}</div>
+          <div className="reactions">
+            <span className="like" onClick={() => like(item[0])}>
+              &#x1F44F;
+            </span> {item[4]}
+          </div>
+        </div>
+      ))}
+    </>
   )
 }
 
-export default Create;
+export default List;

@@ -3,7 +3,8 @@ const InitialState = {
   accounts: [],
   contract: undefined,
   loading: false,
-  message: undefined
+  message: undefined,
+  news: []
 }
 
 export default InitialState;
