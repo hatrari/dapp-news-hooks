@@ -8,6 +8,7 @@ import GetWeb3 from './web3/GetWeb3';
 import News from './contracts/News.json';
 import Message from './components/Message';
 import List from './components/List';
+import Loading from './components/Loading';
 
 function App() {
   // create the store
@@ -42,7 +43,8 @@ function App() {
       <StoreContext.Provider value={{state, dispatch}}>
         <div className="container">
           {state.message && <Message />}
-          <Create />
+          {state.loading && <Loading />}
+          {!state.loading && <Create />}
           {state.news && <List />}
         </div>
       </StoreContext.Provider>
@@ -50,9 +52,7 @@ function App() {
   }
 
   return (
-    <div className="container">
-      Loading...
-    </div>
+    <Loading />
   )
 }
 
