@@ -3,13 +3,14 @@ import StoreContext from '../store/StoreContext';
 
 const List = () => {
   const {state, dispatch} = useContext(StoreContext);
-  const itemsToShow = state.news.length > 10 ? state.news.length - 10 : 0;
+  const itemsToShow = state.news.length > 5 ? state.news.length - 5 : 0;
   const like = (id) => {
     dispatch({type: 'SET_LOADING', payload: true});
+    dispatch({type: 'SET_MESSAGE', payload: undefined});
     state.contract.methods
       .like(id)
       .send({from: state.accounts[0]}, (err, hash) => {
-        dispatch({type: 'SET_MESSAGE', payload: 'TxHash : '.concat(hash)});
+        dispatch({type: 'SET_MESSAGE', payload: hash});
       })
       .then(res => {
       })
@@ -20,6 +21,7 @@ const List = () => {
         });
       })
       .finally(async () => {
+        dispatch({type: 'SET_MESSAGE', payload: undefined});
         const news = await state.contract.methods.news().call();
         dispatch({type: 'SET_NEWS', payload: news});
         dispatch({type: 'SET_LOADING', payload: false});
@@ -27,7 +29,7 @@ const List = () => {
   }
   return (
     <>
-      <div id="title"><span>Last 10 news</span></div>
+      <div id="title"><span>Last Five News</span></div>
       {state.news.slice(itemsToShow).map(item => (
       <div className="card" key={item[0]}>
           <div className="address">{item[1]}</div>

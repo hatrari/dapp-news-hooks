@@ -34,6 +34,10 @@ body {
   margin: 10px;
   color: #144955;
 }
+.container #message a {
+  font-size: 16px;
+  color: #144955;
+}
 .container #error {
   width: 100%;
   font-size: 20px;
@@ -70,10 +74,8 @@ body {
   margin: 30px 10px 20px 10px;
 }
 .container #title span {
-  background: #eff1f3;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
-  border-bottom: 5px solid #144955;
   padding: 5px;
   color: #144955;
 }

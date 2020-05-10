@@ -6,12 +6,13 @@ const Create = () => {
   const [content, setContent] = useState('');
   const submit = () => {
     dispatch({type: 'SET_LOADING', payload: true});
+    dispatch({type: 'SET_MESSAGE', payload: undefined});
     let date = new Date().toLocaleDateString();
     state.contract.methods
       .create(content, date)
       .send({from: state.accounts[0]}, (err, hash) => {
         setContent('');
-        dispatch({type: 'SET_MESSAGE', payload: 'TxHash : '.concat(hash)});
+        dispatch({type: 'SET_MESSAGE', payload: hash});
       })
       .then(res => {
       })
@@ -22,6 +23,7 @@ const Create = () => {
         });
       })
       .finally(async () => {
+        dispatch({type: 'SET_MESSAGE', payload: undefined});
         const news = await state.contract.methods.news().call();
         dispatch({type: 'SET_NEWS', payload: news});
         dispatch({type: 'SET_LOADING', payload: false});

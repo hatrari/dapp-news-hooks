@@ -3,9 +3,10 @@ import StoreContext from '../store/StoreContext';
 
 const Message = () => {
   const {state} = useContext(StoreContext);
+  const href = "https://ropsten.etherscan.io/tx/".concat(state.message);
   return (
     <div id="message">
-      {state.message}
+      <a href={href}>{href}</a>
     </div>
   )
 }
