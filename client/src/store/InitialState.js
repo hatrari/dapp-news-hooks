@@ -4,7 +4,8 @@ const InitialState = {
   contract: undefined,
   loading: false,
   message: undefined,
-  news: []
+  news: [],
+  error: undefined
 }
 
 export default InitialState;

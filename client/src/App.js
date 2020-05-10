@@ -13,6 +13,7 @@ import Loading from './components/Loading';
 function App() {
   // create the store
   const [state, dispatch] = useReducer(Reducer, InitialState);
+
   useEffect(() => {
     const init = async () => {
       try {
@@ -31,29 +32,39 @@ function App() {
         const news = await contract.methods.news().call();
         dispatch({type: 'SET_NEWS', payload: news});
         dispatch({type: 'SET_LOADING', payload: false});
-      } catch {
-        console.log('error');
+      } catch (error) {
+        if(state.contract == undefined) {
+          dispatch({
+            type: 'SET_ERROR',
+            payload: 'Please use Metamask on Ropsten network.'
+          });
+        }
       }
     }
     init();
   }, []);
   
-  if(state.web3 && state.accounts && state.contract) {
+  if (state.error) {
+    return (
+      <div className="container">
+        <div id="error">{state.error}</div>
+      </div>
+    )
+  } else if (state.web3 && state.accounts && state.contract) {
     return (
       <StoreContext.Provider value={{state, dispatch}}>
         <div className="container">
           {state.message && <Message />}
-          {state.loading && <Loading />}
           {!state.loading && <Create />}
-          {state.news && <List />}
+          {state.news.length > 0 && <List />}
         </div>
       </StoreContext.Provider>
     )
+  } else {
+    return (
+      <Loading />
+    )
   }
-
-  return (
-    <Loading />
-  )
 }
 
 export default App;

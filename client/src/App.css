@@ -34,6 +34,14 @@ body {
   margin: 10px;
   color: #144955;
 }
+.container #error {
+  width: 100%;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  color: red;
+}
 .container #create {
   margin: 20px 10px;
 }

@@ -5,6 +5,7 @@ const SET_CONTRACT = 'SET_CONTRACT';
 const SET_LOADING = 'SET_LOADING';
 const SET_MESSAGE = 'SET_MESSAGE';
 const SET_NEWS = 'SET_NEWS';
+const SET_ERROR = 'SET_ERROR';
 
 // REDUCER
 const Reducer = (state, action) => {
@@ -21,6 +22,8 @@ const Reducer = (state, action) => {
       return {...state, message: action.payload};
     case SET_NEWS:
       return {...state, news: action.payload};
+    case SET_ERROR:
+      return {...state, error: action.payload};
   }
 }
 
